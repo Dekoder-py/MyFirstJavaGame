@@ -1,5 +1,8 @@
+import org.gradle.internal.os.OperatingSystem
+
 plugins {
     id 'java'
+    id 'application'
 }
 
 project.ext.lwjglVersion = "3.4.1"
@@ -103,4 +106,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+application {
+    mainClass = "dev.codingcorner.test.Launcher"
+}
+
+tasks.withType(JavaExec).configureEach {
+        jvmArgs "-XstartOnFirstThread"
 }
